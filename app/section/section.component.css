@@ -1,0 +1,25 @@
+.statusform {
+    margin-top: 10px;
+    background-color: dodgerblue;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 600px;
+}
+
+.button {
+    width: 50%;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.minerror {
+   color: crimson;
+   font: bold;
+   font-size: 20px;
+}
+
+.container {
+    max-width: 600px;
+    background-color: antiquewhite;
+    display: inline-flex;
+}

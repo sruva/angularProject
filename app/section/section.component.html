@@ -1,0 +1,62 @@
+<form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" class="statusform col-sm-4" >
+  <div class="form-group form-control-feedback">
+    <label for="statusname">Enter Task Name:</label>
+    <input type="text" name="statusname" class="form-control" [(ngModel)]="statusname" required #uname="ngModel">
+    <p>{{ statusname }}</p>
+  </div>
+  <div *ngIf="uname.required" [ngClass]="'minerror'"> 
+	   Status Name required. 
+  </div> 
+  <div class="form-group">
+    <label for="status">Enter Task Description:</label>
+    <input type="text" class="form-control" name="desc" [(ngModel)]="desc" required minlength="5" #udesc="ngModel">
+    <p>{{desc}}</p>
+  </div>
+  <div *ngIf="udesc.errors?.required" [ngClass]="'minerror'"> 
+    Status Description required. 
+</div>
+<div *ngIf="udesc.errors?.minlength" [ngClass]="'minerror'"> 
+    Description must be at least 5 characters long.
+</div> 
+  <div class="form-group">
+    <label for="sel1">Enter Task Status:</label>
+    <select class="form-control" [(ngModel)]="selectedOption" name="first">
+      <option [value]="''" disabled selected>Select Option</option> 
+      <option *ngFor="let o of options">
+          {{o.name}}
+      </option>
+    </select>
+    <p>Selected option: {{ selectedOption }}</p>
+  </div>
+  <button type="submit" class="btn btn-success button" (click)="handleClick($event)" value="submit">Add</button>
+  <button type="reset" class="btn btn-danger button" (click)="handleReset()">Clear</button>
+</form>
+
+<div class="container">       
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th>Task name</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{statusname}}</td>
+        <td>{{desc}}</td>
+        <td>{{selectedOption}}</td>
+      </tr>
+      <tr *ngFor="let det of taskdetails">
+        <td>{{det.statusname}}</td>
+        <td>{{det.statusname}}</td>
+        <td>{{det.selectedOption}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<table>
+  <tr *ngFor="let contact of contacts" style="margin-bottom: 10px;">
+      <td>{{contact}}</td>
+  </tr>
+</table>
